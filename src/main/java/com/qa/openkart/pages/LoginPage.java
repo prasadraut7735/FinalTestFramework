@@ -27,7 +27,7 @@ public class LoginPage {
 
 	public String getLoginPageTitle() {
 		String title = driver.getTitle();
-		log.info("Login page title is: " + title);
+		log.info("Login page title is : " + title);
 		return title;
 	}
 
