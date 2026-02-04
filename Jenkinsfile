@@ -40,7 +40,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/prasadraut7735/FinalTestFramework.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunner/regression.xml"
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunner/regression.xml Denv=sit"
                     
                 }
             }
@@ -74,9 +74,9 @@ pipeline
             }
         }
         
-        stage("Deploy to Stage"){
+        stage("Deploy to UAT"){
             steps{
-                echo("deploy to Stage")
+                echo("deploy to UAT")
             }
         }
         
