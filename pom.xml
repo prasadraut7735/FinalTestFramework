@@ -85,7 +85,8 @@
           <forkCount>1</forkCount> <!-- increase if tests support parallel -->
           <reuseForks>true</reuseForks>
           <suiteXmlFiles>
-            <suiteXmlFile>src/test/resources/testRunner/regression.xml</suiteXmlFile>
+            <!--<suiteXmlFile>src/test/resources/testRunner/regression.xml</suiteXmlFile>-->
+          	<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
           </suiteXmlFiles>
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
