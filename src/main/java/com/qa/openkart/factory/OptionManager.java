@@ -1,5 +1,7 @@
 package com.qa.openkart.factory;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,17 +27,24 @@ public class OptionManager {
 		if (Boolean.parseBoolean(prop.getProperty("incognito"))) {
 			co.addArguments("--incognito");
 		}
+		if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+			co.setCapability("browserName", "chrome");
+		}
 		return co;
 	}
 
 	public FirefoxOptions getFirefoxOption() {
 		fo = new FirefoxOptions();
-		if (Boolean.parseBoolean(prop.getProperty("headlees"))) {
+		if (Boolean.parseBoolean(prop.getProperty("headless"))) {
 			fo.addArguments("--headless");
 		}
 		if (Boolean.parseBoolean(prop.getProperty("incognito"))) {
 			fo.addArguments("--private");
 		}
+		if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+			fo.setCapability("browserName", "firefox");
+		}
+
 		return fo;
 	}
 
@@ -47,6 +56,10 @@ public class OptionManager {
 		if (Boolean.parseBoolean(prop.getProperty("incognito"))) {
 			eo.addArguments("--inprivate");
 		}
+		if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+		    eo.setCapability("browserName", "MicrosoftEdge");
+		}
+
 		return eo;
 	}
 }

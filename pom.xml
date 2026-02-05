@@ -86,7 +86,7 @@
           <reuseForks>true</reuseForks>
           <suiteXmlFiles>
             <!--<suiteXmlFile>src/test/resources/testRunner/regression.xml</suiteXmlFile>-->
-          	<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+          	<suiteXmlFile>src/test/resources/testrunner/regression.xml</suiteXmlFile>
           </suiteXmlFiles>
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
