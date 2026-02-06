@@ -24,32 +24,32 @@ public class DriverFactory {
 
 	WebDriver driver;
 	Properties prop;
-	OptionManager op;
+
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
 	public WebDriver initDriver(Properties prop) {
 		String browserName = prop.getProperty("browser");
 		System.out.println("Browser Name is: " + browserName);
 
-		op = new OptionManager(prop);
+		OptionManager op = new OptionManager(prop);
 		switch (browserName.toLowerCase().trim()) {
 		case "chrome":
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
-				init_remoteDriver("chrome");
+				init_remoteDriver("chrome", prop, op);
 			} else {
 				tlDriver.set(new ChromeDriver(op.getChromeOption()));
 			}
 			break;
 		case "firefox":
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
-				init_remoteDriver("firefox");
+				init_remoteDriver("firefox", prop, op);
 			} else {
 				tlDriver.set(new FirefoxDriver(op.getFirefoxOption()));
 			}
 			break;
 		case "edge":
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
-				init_remoteDriver("edge");
+				init_remoteDriver("edge", prop, op);
 			} else {
 				tlDriver.set(new EdgeDriver(op.getEdgeOption()));
 			}
@@ -67,7 +67,7 @@ public class DriverFactory {
 		return getDriver();
 	}
 
-	private void init_remoteDriver(String browserName) {
+	private void init_remoteDriver(String browserName, Properties prop, OptionManager op) {
 		System.out.println("Running the test case in remote");
 		try {
 
